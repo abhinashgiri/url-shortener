@@ -1,0 +1,21 @@
+{
+  "name": "nano_url",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "mongoose": "^5.12.13",
+    "nanoid": "^3.1.23",
+    "nodemon": "^2.0.7",
+    "yup": "^0.32.9"
+  }
+}
