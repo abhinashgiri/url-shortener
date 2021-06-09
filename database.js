@@ -9,7 +9,8 @@ mongoose.connect(string_uri,{'useNewUrlParser':true, 'useUnifiedTopology':true})
 const urlSchema = {
   url : String,
   slug: String,
-  createdOn:{type:Date,default:Date.now}
+  // changed from timestamp to Date instance
+  createdOn:{type:Date,default:new Date()}
 } 
 
 const urlShortener = mongoose.model('urlShortener',urlSchema);
@@ -24,21 +25,23 @@ async function createEntry(originalUrl,shortUrl)
   })
   let slug_in_use = await urlShortener.find({slug:shortUrl});
   let slug_used = false;
+  let createdOn = entry.createdOn;
   if(slug_in_use.length)
   {
     console.log(`Slug in use ${slug_in_use}`);
     slug_used=true;
-    return slug_used=true;
+    return {slug_used:true,createdOn:createdOn};
   }
   entry = await entry.save();
   console.log(`Entry created on database\n Entry: ${entry}`);
-  return slug_used;
+  return {slug_used:slug_used,createdOn:createdOn};
 }
 
 async function removeEntry(slug)
 {
   let result = await urlShortener.findOneAndDelete({slug:slug});
   console.log(`document to be removed is ${result}`);
+  return result;
 }
 
 
@@ -60,3 +63,4 @@ async function getOriginalUrl (slug)
 
 
 module.exports={createEntry,getOriginalUrl,removeEntry};
+

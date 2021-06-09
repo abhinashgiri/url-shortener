@@ -1,6 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
+
+const date = require('date-and-time');
+const schedule = require('node-schedule');
+
 const input_validation = require('./validation');
 const {createEntry,getOriginalUrl,removeEntry} = require('./database');
 
@@ -22,6 +26,12 @@ app.post('/original',(req,res,next)=>{
   // getOriginalUrl returns an array of results (although a single element in an arrar , in our case)
   getOriginalUrl(slug)
   .then((result)=>{
+    // probably the entry expired or did not exist
+    if(result.length==0)
+    {
+      res.send('No Entry found with requested slug, probably expired\n Try creating new Entry !');
+      return;
+    }
     console.log(`originalUrl : ${result[0].url}`);
     res.redirect(result[0].url);
   })
@@ -40,12 +50,24 @@ app.post('/service', async  (req,res,next)=>
     // res.send(req.body);
     await input_validation(req,res,next).then(()=>{
       createEntry(req.body.url,req.body.slug)
-      .then((slug_in_use)=>{
-        if(slug_in_use)
+      .then((obj)=>{
+        const slug_in_use=obj.slug_used;
+        const createdOn = obj.createdOn;
+        if(slug_in_use==true)
         {
           res.send('Slug already in use\n');
           return;
         }
+        console.log(`slug_in_use : ${slug_in_use}`);
+        let expiry = new Date ();
+        expiry = createdOn;
+        expiry = date.addMinutes(expiry,req.body.expiry);
+        console.log(`created on ${createdOn}, expires at ${date.format(expiry, 'YYYY/MM/DD HH:mm:ss')}`);
+        schedule.scheduleJob(expiry,async ()=>{
+            await removeEntry(req.body.slug).then((result)=>{
+            console.log(`Deleted entry ${result}`);
+          })
+        })
         res.send(req.body);
       })
       
