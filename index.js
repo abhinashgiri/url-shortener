@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
-
+const path = require('path');
 const date = require('date-and-time');
 const schedule = require('node-schedule');
 
@@ -27,11 +27,17 @@ app.use(express.static('./public'));
 
 
 
-
 app.post('/testing',(req,res,next)=>{
-  // console.log(req);
+  console.log(req.body.expiry);
   console.log('Activated');
   console.log(req.body);
+  let now = Date.parse(req.body.expiry);
+  console.log(now);
+  now = new Date(now);
+  console.log(now);
+  now = date.format(now,"YYYY/MM/DD HH:mm:ss");
+  console.log(now);
+
   res.status(200).send('Done');
 })
 
@@ -107,7 +113,13 @@ app.use((error , req,res,next)=>
 {
   console.log(`Error handler activated\n Error:${error.message}`);
   res.send(error.message);
-  
+
+})
+
+// 404 route
+app.use(function (req, res, next) {
+  console.log('404 Error Handled Sucessfully !');
+  res.status(404).sendFile(path.join(__dirname+'/public/Not_Found.html'));
 })
 
 

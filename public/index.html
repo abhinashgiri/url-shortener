@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,300i,400,700,900|Ubuntu&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,300i,400,700,900|Ubuntu&display=swap"
+    rel="stylesheet">
 
   <!-- Favicons -->
-  <link rel="icon" href="./images/icon_app.png">
+  <link rel="icon" href="/images/icon_app.png">
 
   <title>ABHI'S URL SHORTENER</title>
   <!-- My CSS Stylesheet -->
@@ -16,28 +18,120 @@
 
 
 </head>
+
 <body>
+
   <header class="text-gray-400 bg-gray-900 body-font">
-    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <div class=" container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
       <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-blue-500 rounded-full" viewBox="0 0 24 24">
+        <img src="/images/url-shorten.svg" alt="url-shorten" class="h-16">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+          stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-blue-500 rounded-full"
+          viewBox="0 0 24 24">
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-        </svg>
+        </svg> -->
+        
         <span class="ml-3 text-xl">Shortify</span>
       </a>
-      <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-        <a class="mr-5 hover:text-white ">First Link</a>
-        <a class="mr-5 hover:text-white">Second Link</a>
-        <!-- <a class="mr-5 hover:text-white">Third Link</a>
-        <a class="mr-5 hover:text-white">Fourth Link</a> -->
+      <nav class="  md:ml-auto flex flex-wrap  float-right">
+        <a class="mr-5 hover:text-white   ">How It Works</a>
+        <a class="mr-5 hover:text-white  ">Testimonial</a>
+        <a class="mr-5 hover:text-white">Contact Us</a>
+        <!-- <a class="mr-5 hover:text-white">Fourth Link</a> -->
       </nav>
-      <button class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Button
+      <!-- <button class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-yellow-50 rounded text-base mt-4 md:mt-0">Button
         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
           <path d="M5 12h14M12 5l7 7-7 7"></path>
         </svg>
-      </button>
+      </button> -->
     </div>
   </header>
+
+
+
+
+
+  <!-- Forms Section  -->
+  <section class="text-gray-400 bg-gray-900 body-font w-full">
+    <h2 class="text-4xl font-semibold text-white capitalize text-center md:pt-6">Welcome Guest !</h2>
+    <div class=" container px-5 py-24 mx-auto flex flex-wrap">
+      
+      <div class="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden">
+      
+        <section class=" max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+          <!-- <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Account settings</h2> -->
+          <form action="/testing" method="POST">
+            <div class="grid grid-cols-1 gap-6 mt-4">
+              <div>
+                <label class="text-gray-700 dark:text-gray-200" for="url"> Enter a long URL to make a ShortURL <label>
+
+                <input name="original_url" id="url" required type="url" placeholder="https://"
+                  class="w-full block  px-4 py-2 mt-2  bg-white border border-gray-300 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring   text-black transition duration-500 ease-in-out transform border-transparent rounded-lg bg-blueGray-100 focus:border-blueGray-500 focus:bg-white  focus:shadow-outline  ring-offset-current ring-offset-2">
+
+
+              </div>
+
+              <div>
+                <label class="text-gray-700 dark:text-gray-200" for="slug">Customize your link</label>
+                <input  name="Alias" id="slug" type="text" placeholder="Alias"
+                  class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+              </div>
+
+              <div>
+                <label class="text-gray-700 dark:text-gray-200" for="Expiry_date">Expiry</label>
+                <input  name="expiry" id="Expiry_date" type="datetime-local" placeholder="10 min"
+                  class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+              </div>
+
+
+
+            </div>
+
+            <div class="flex justify-end mt-6">
+              <button type="submit"
+                class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-gray-600">Shortify</button>
+            </div>
+          </form>
+        </section>
+      </div>
+      <!-- <img alt="feature" class="object-cover object-center h-full w-full" src="https://dummyimage.com/460x500"> -->
+      <div class="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center">
+        <div class="flex flex-col mb-10 lg:items-start items-center">
+          <div class="flex">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+              class="text-blue-400 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+              <path d="M22 4L12 14.01l-3-3"></path>
+            </svg>
+            <h2 class="text-white text-lg title-font font-medium mb-3 flex"> Easy Link Shortening</h2>
+          </div>
+          <div class="flex">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+              class="text-blue-400 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+              <path d="M22 4L12 14.01l-3-3"></path>
+            </svg>
+            <h2 class="text-white text-lg title-font font-medium mb-3 flex"> Customized ShortURLs</h2>
+          </div>
+          <div class="flex">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+              class="text-blue-400 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+              <path d="M22 4L12 14.01l-3-3"></path>
+            </svg>
+            <h2 class="text-white text-lg title-font font-medium mb-3 flex"> Expiry Selection</h2>
+          </div>
+          <div class="flex">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+              class="text-blue-400 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+              <path d="M22 4L12 14.01l-3-3"></path>
+            </svg>
+            <h2 class="text-white text-lg title-font font-medium mb-3 flex">Anonymous usage</h2>
+          </div>
+        </div>
+      </div>
+  </section>
   <!-- <h1 class="">Welcome to Homepage</h1>
   <form action="/testing" method="POST" >
     <div>
@@ -52,21 +146,49 @@
     <button type="submit">Submit</button>
   </form> -->
 
-    <!-- <div class="area">
-    <ul class="circles">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
-  </div> -->
+
+  <!-- Footer Section -->
+
+  <footer class="text-gray-400 bg-gray-900 body-font">
+    <div class="container px-10 py-8 mx-auto flex items-center sm:flex-row flex-col">
+
+      <p class="text-sm text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4">© 2021
+        Shortify —
+        <a href="https://twitter.com/abhinash_giri14" class="text-gray-500 ml-1" target="_blank"
+          rel="noopener noreferrer">@abhinash_giri</a>
+      </p>
+      <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
   
+        <a class=" text-gray-400 md:px-10" href="https://www.linkedin.com/in/abhinash-kumar-giri-495720197/">
+          <img src="/images/linked-in.svg" alt="LinkedIn-icon" class="h-11">
+        </a>
+
+        <a class=" text-gray-400 md:px-10" href="https://github.com/abhinashgiri">
+          <img src="/images/github.svg" alt="github-icon" class="h-10">
+        </a>
+
+        <a class="text-gray-400 md:px-10" href="https://www.facebook.com/abinashkumar.giri.71">
+          <img src="/images/facebook.svg" alt="facebook-icon" class="h-10">
+        </a>
+        <a class="text-gray-400 md:px-10" href="https://twitter.com/abhinash_giri14">
+          <img src="/images/twitter.svg" alt="twitter-icon" class="h-10">
+        </a>
+        
+
+      </span>
+    </div>
+  </footer>
+
+
+
+
+
+
+
+
+
+
 
 </body>
+
 </html>
