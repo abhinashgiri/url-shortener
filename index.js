@@ -9,13 +9,31 @@ const input_validation = require('./validation');
 const {createEntry,getOriginalUrl,removeEntry} = require('./database');
 
 
+
 const app = express();
+
+
 app.use(express.json());
+
+// is used to populate req.body property with user data to look like json object
+// key=value & key=value { these type of data , usually in html forms }
+app.use(express.urlencoded({extended:true}));
+
 app.use(cors());
 app.use(helmet());
 app.use(express.static('./public'));
 
 
+
+
+
+
+app.post('/testing',(req,res,next)=>{
+  // console.log(req);
+  console.log('Activated');
+  console.log(req.body);
+  res.status(200).send('Done');
+})
 
 
 
@@ -59,6 +77,8 @@ app.post('/service', async  (req,res,next)=>
           return;
         }
         console.log(`slug_in_use : ${slug_in_use}`);
+
+        // schedule auto deletion at expiry time
         let expiry = new Date ();
         expiry = createdOn;
         expiry = date.addMinutes(expiry,req.body.expiry);
@@ -68,6 +88,8 @@ app.post('/service', async  (req,res,next)=>
             console.log(`Deleted entry ${result}`);
           })
         })
+
+
         res.send(req.body);
       })
       
