@@ -28,17 +28,13 @@ app.use(express.static('./public'));
 
 
 app.post('/testing',(req,res,next)=>{
-  console.log(req.body.expiry);
-  console.log('Activated');
-  console.log(req.body);
   let now = Date.parse(req.body.expiry);
-  console.log(now);
   now = new Date(now);
   console.log(now);
   now = date.format(now,"YYYY/MM/DD HH:mm:ss");
   console.log(now);
 
-  res.status(200).send('Done');
+
 })
 
 
@@ -72,6 +68,7 @@ app.post('/service', async  (req,res,next)=>
   {
     // await input_validation(req,res,next);
     // res.send(req.body);
+    console.log(req.body);
     await input_validation(req,res,next).then(()=>{
       createEntry(req.body.url,req.body.slug)
       .then((obj)=>{
@@ -85,17 +82,14 @@ app.post('/service', async  (req,res,next)=>
         console.log(`slug_in_use : ${slug_in_use}`);
 
         // schedule auto deletion at expiry time
-        let expiry = new Date ();
-        expiry = createdOn;
-        expiry = date.addMinutes(expiry,req.body.expiry);
+        let expiry = req.body.expiry;
+        expiry = new Date(expiry);
         console.log(`created on ${createdOn}, expires at ${date.format(expiry, 'YYYY/MM/DD HH:mm:ss')}`);
         schedule.scheduleJob(expiry,async ()=>{
             await removeEntry(req.body.slug).then((result)=>{
             console.log(`Deleted entry ${result}`);
           })
         })
-
-
         res.send(req.body);
       })
       

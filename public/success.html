@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Google Fonts -->
@@ -16,12 +17,18 @@
   <link rel="stylesheet" href="style.css">
 
 
-
 </head>
 
 <body>
 
+
+
+
+
+
+
   <header class="text-gray-400 bg-gray-900 body-font">
+
     <div class=" container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
       <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
         <img src="/images/url-shorten.svg" alt="url-shorten" class="h-16">
@@ -30,7 +37,7 @@
           viewBox="0 0 24 24">
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
         </svg> -->
-        
+
         <span class="ml-3 text-xl">Shortify</span>
       </a>
       <nav class="  md:ml-auto flex flex-wrap  float-right">
@@ -39,6 +46,34 @@
         <a class="mr-5 hover:text-white">Contact Us</a>
         <!-- <a class="mr-5 hover:text-white">Fourth Link</a> -->
       </nav>
+
+
+
+      <!-- Notification Section -->
+
+      <div class="flex flex-row ml-56 mt-5 md:ml-0 md:mr-0 text-right">
+        <div class="px-2">
+          <svg width="24" height="24" viewBox="0 0 1792 1792" fill="#44C997" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M1299 813l-422 422q-19 19-45 19t-45-19l-294-294q-19-19-19-45t19-45l102-102q19-19 45-19t45 19l147 147 275-275q19-19 45-19t45 19l102 102q19 19 19 45t-19 45zm141 83q0-148-73-273t-198-198-273-73-273 73-198 198-73 273 73 273 198 198 273 73 273-73 198-198 73-273zm224 0q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z" />
+          </svg>
+        </div>
+        <div class="ml-2 mr-6">
+          <span class="font-semibold text-white">Copied to clipboard</span>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
       <!-- <button class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-yellow-50 rounded text-base mt-4 md:mt-0">Button
         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
           <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -51,55 +86,81 @@
 
 
 
-  
-    
+
+
 
   <!-- Forms Section  -->
   <section class="text-gray-400 bg-gray-900 body-font w-full">
     <h2 class="text-4xl font-semibold text-white capitalize text-center md:pt-6">Welcome Guest !</h2>
     <div class=" container px-5 py-24 mx-auto flex flex-wrap">
-      
+
       <div class="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden">
-      
+
         <section class=" max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
           <!-- <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Account settings</h2> -->
-          <form action="/service" method="POST">
+          <form action="/" method="GET">
             <div class="grid grid-cols-1 gap-6 mt-4">
               <div>
-                <label class="text-gray-700 dark:text-gray-200" for="original_url"> Enter a long URL to make a ShortURL <label>
-                
-                <input name="url" id="original_url" required type="url" placeholder="https://"
-                  class="w-full block  px-4 py-2 mt-2  bg-white border border-gray-300 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring   text-black transition duration-500 ease-in-out transform border-transparent rounded-lg bg-blueGray-100 focus:border-blueGray-500 focus:bg-white  focus:shadow-outline  ring-offset-current ring-offset-2">
+                <label class="text-gray-700 dark:text-gray-200" for="original_url">
 
+                  <div class="flex">
+                    <div class="w-5 mr-1 md:w-10 lg:w-10">
+                      <img src="./images/link.svg" alt="link-icon">
+                    </div>
+
+                    <h1 class=" font-black border-blue-500  md:mt-2 md:text-xl lg:text-xl">Your long URL </h1>
+                  </div>
+
+                  <label>
+                    <textarea name="url" id="original_url" disabled contenteditable=""
+                      class=" resize-none  md:px-3 md:py-3 w-full block md:h-52 break-normal  break-all   mt-2  bg-white  border-black dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600border-blue-500  outline-none ring   text-black transition duration-500 ease-in-out transform border-transparent rounded-lg bg-blueGray-100 border-blueGray-500 border-  shadow-outline ">"https://www.google.com/search?q=for+attribute+in+label&rlz=1C5CHFA_enIN870IN870&ei=7sXDYPjYCNqF4-EPuO6A4A0&oq=for+a&gs_lcp=Cgdnd3Mtd2l6 EJECMgQIABBDMgUILhCxAzIFCC4QsQMyAggAMgIILjIFCAAQsQMyAggAMgIIADoICAAQsQMQgwE6CAguELEDEIMBOgcIABCxAxBDOgsILhCxAxDHARCjAlDdNljsPGD_S2gAcAJ4AIAB_QGIAfgKkgEDMi02mAEAoAEBqgEHZ3dzLXdpesABAQ&sclient=gws-wiz"
+                  </textarea>
 
               </div>
 
               <div>
-                <label class="text-gray-700 dark:text-gray-200" for="Alias"> Customize your link</label>
-                <input  name="slug" id="Alias" type="text" placeholder="Alias"
-                  class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+
+                <label class="text-gray-700 dark:text-gray-200" for="Alias">
+                  <div class="flex">
+                    <div class="w-12 h-8 mr-1 md:w-16 lg:w-16">
+                      <img src="./images/short-link.png" alt="link-icon">
+                    </div>
+
+                    <h1 class=" font-black border-blue-500 md:text-xl lg:text-xl">Short URL </h1>
+                  </div>
+                </label>
+
+                <input name="slug" id="Alias" type="text" value="qefwrgafaretrff" readonly
+                  class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300  border-yellow-400 md:h-20 outline-none focus:ring">
+
+                  <button type="submit" name="visit" formaction="">
+                    <img src="./images/visit.svg" class="mt-2 pl-1 lg:h-8 md:h-8 h-5" alt="Copy to clipboard">
+                  </button>
+                  
+
+                  <button type="button" data-clipboard-target="#Alias" id="btn"">
+                  <img src="./images/clippy.svg" class="mt-2 pl-1 lg:h-8 md:h-8 h-5" alt="Copy to clipboard">
+                  </button>
+                  
+
               </div>
 
-              <div>
-                <label class="text-gray-700 dark:text-gray-200" for="Expiry_date">Expiry</label>
-                <input  name="expiry" id="Expiry_date" type="datetime-local" placeholder="10 min"
-                  class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
-                  <label class="text-gray-700 md:pl-8 text-xs dark:text-gray-200">At this time , Alias will be self-destroy.</label>
-              </div>
+              <button
+                class="inline-flex w-1/4 text-white items-center bg-gray-700 border-0 py-1 px-3 focus:outline-black hover:bg-black :text-white rounded text-base mt-4 md:mt-0">Try
+                Another
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </button>
 
-
-
-            </div>
-
-            <div class="flex justify-end mt-6">
-              <button type="submit"
-                class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-gray-600">Shortify</button>
             </div>
           </form>
         </section>
       </div>
       <!-- <img alt="feature" class="object-cover object-center h-full w-full" src="https://dummyimage.com/460x500"> -->
-      <div class="flex flex-col flex-wrap w-7 lg:py-6 -mb-10  lg:w-1/2 md:w-1/2 lg:pl-12 md:px-8 lg:text-left text-center">
+      <div
+        class="flex flex-col flex-wrap w-7 lg:py-6 -mb-10  lg:w-1/2 md:w-1/2 lg:pl-12 md:px-8 lg:text-left text-center">
         <div class="flex flex-col mb-10 lg:items-start  md:items-baseline   sm:items-baseline  items-center">
           <div class="flex pl-4">
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
@@ -107,7 +168,7 @@
               <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
               <path d="M22 4L12 14.01l-3-3"></path>
             </svg>
-            <h2 class="text-white text-lg title-font font-medium mb-3 flex "> Easy Link Shortening</h2>
+            <h2 class="text-white text-lg title-font font-medium mb-3 flex md:text-xl "> Easy Link Shortening</h2>
           </div>
           <div class="flex pl-4">
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
@@ -115,7 +176,7 @@
               <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
               <path d="M22 4L12 14.01l-3-3"></path>
             </svg>
-            <h2 class="text-white text-lg title-font font-medium mb-3 flex "> Customized ShortURLs</h2>
+            <h2 class="text-white text-lg title-font font-medium mb-3 flex md:text-xl"> Customized ShortURLs</h2>
           </div>
           <div class="flex pl-4">
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
@@ -123,7 +184,7 @@
               <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
               <path d="M22 4L12 14.01l-3-3"></path>
             </svg>
-            <h2 class="text-white text-lg title-font font-medium mb-3 flex">Anonymous usage</h2>
+            <h2 class="text-white text-lg title-font font-medium mb-3 flex md:text-xl">Anonymous usage</h2>
           </div>
           <div class="flex pl-4 ">
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
@@ -131,7 +192,7 @@
               <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
               <path d="M22 4L12 14.01l-3-3"></path>
             </svg>
-            <h2 class="text-white text-lg title-font font-medium mb-3 flex">Expiry Selection</h2>
+            <h2 class="text-white text-lg title-font font-medium mb-3 flex md:text-xl ">Expiry Selection</h2>
           </div>
         </div>
       </div>
@@ -162,7 +223,7 @@
           rel="noopener noreferrer">@abhinash_giri</a>
       </p>
       <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-  
+
         <a class=" text-gray-400 md:mr-24 mr-10" href="https://www.linkedin.com/in/abhinash-kumar-giri-495720197/">
           <img src="/images/linked-in.svg" alt="LinkedIn-icon" class="h-11">
         </a>
@@ -177,7 +238,7 @@
         <a class="text-gray-400 md:mr-24 mr-10 " href="https://twitter.com/abhinash_giri14">
           <img src="/images/twitter.svg" alt="twitter-icon" class="h-10">
         </a>
-        
+
 
       </span>
     </div>
@@ -189,6 +250,12 @@
 
 
 
+
+
+
+
+  <script src="./clipboard.min.js"></script>
+  <script src="./action.js"></script>
 
 
 
