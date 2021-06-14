@@ -6,11 +6,13 @@ mongoose.connect(string_uri,{'useNewUrlParser':true, 'useUnifiedTopology':true})
 .then(()=>console.log("Sucessfully Connected to MongoDB ..."))
 .catch((error)=>console.log(`Database Error : ${error}`));
 
+
+
 const urlSchema = {
   url : String,
   slug: String,
   // changed from timestamp to Date instance
-  createdOn:{type:Date,default:new Date()}
+  createdOn:{type:Date,default: new Date()}
 } 
 
 const urlShortener = mongoose.model('urlShortener',urlSchema);
@@ -24,17 +26,17 @@ async function createEntry(originalUrl,shortUrl)
     slug : shortUrl,
   })
   let slug_in_use = await urlShortener.find({slug:shortUrl});
-  let slug_used = false;
-  let createdOn = entry.createdOn;
+  let SLUG_USED = false;
+  let CREATED_ON = entry.createdOn;
   if(slug_in_use.length)
   {
     console.log(`Slug in use ${slug_in_use}`);
-    slug_used=true;
-    return {slug_used:true,createdOn:createdOn};
+    SLUG_USED=true;
+    return {slug_used:SLUG_USED,createdOn:CREATED_ON};
   }
   entry = await entry.save();
   console.log(`Entry created on database\n Entry: ${entry}`);
-  return {slug_used:slug_used,createdOn:createdOn};
+  return {slug_used:SLUG_USED,createdOn:CREATED_ON};
 }
 
 async function removeEntry(slug)

@@ -7,6 +7,7 @@ const schedule = require('node-schedule');
 
 const input_validation = require('./validation');
 const { createEntry, getOriginalUrl, removeEntry } = require('./database');
+const { assert } = require('console');
 
 
 
@@ -28,18 +29,27 @@ app.set('views', 'public/views');
 
 
 
-// app.post('/testing', (req, res, next) => {
-//   let now = Date.parse(req.body.expiry);
-//   now = new Date(now);
-//   console.log(now);
-//   now = date.format(now, "YYYY/MM/DD HH:mm:ss");
-//   console.log(now);
+app.post('/testing', (req, res, next) => {
+  let now = Date.parse(req.body.expiry);
+  now = new Date(now);
+  console.log(now);
+  now = date.format(now, "YYYY/MM/DD HH:mm:ss");
+  console.log(now);
 
-// })
-// app.get('/testing', (req, res, next) => {
+})
+app.get('/testing', (req, res, next) => {
 
-//   res.render('success', { ORIGINAL_URL: 'https://abhinash.org', SHORT_URL: 'https://www.youtube.com/watch?v=VM-2xSaDxJc' });
-// })
+  let d = new Date();
+  console.log(d);
+  d=d.toUTCString();
+  console.log(d);
+  d=new Date(d);
+  console.log(d);
+  let x = new Date((new Date()).toUTCString());
+  console.log('x  is ',x);
+
+  res.render('success', { ORIGINAL_URL: 'https://abhinash.org', SHORT_URL: 'https://www.youtube.com/watch?v=VM-2xSaDxJc' });
+})
 
 
 
@@ -78,10 +88,12 @@ app.post('/service', async (req, res, next) => {
   try {
     // await input_validation(req,res,next);
     // res.send(req.body);
+  
     console.log(req.body);
     await input_validation(req, res, next).then(() => {
       createEntry(req.body.url, req.body.slug)
         .then((obj) => {
+          console.log(`obj : ${obj.createdOn}`);
           const slug_in_use = obj.slug_used;
           const createdOn = obj.createdOn;
           if (slug_in_use == true) {
@@ -93,13 +105,14 @@ app.post('/service', async (req, res, next) => {
           // schedule auto deletion at expiry time
           let expiry = req.body.expiry;
           expiry = new Date(expiry);
+          expiry = expiry.toUTCString();
+          expiry = new Date(expiry);
           console.log(`created on ${createdOn}, expires at ${date.format(expiry, 'YYYY/MM/DD HH:mm:ss')}`);
           schedule.scheduleJob(expiry, async () => {
             await removeEntry(req.body.slug).then((result) => {
               console.log(`Deleted entry ${result}`);
             })
           })
-
 
           const domain = 'localhost';
           const link = 'http://'+domain +':'+`${port}`+'/'+req.body.slug;

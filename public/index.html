@@ -14,7 +14,7 @@
   <title>ABHI'S URL SHORTENER</title>
   <!-- My CSS Stylesheet -->
   <link rel="stylesheet" href="style.css">
-
+ 
 
 
 </head>
@@ -66,25 +66,25 @@
           <form action="/service" method="POST">
             <div class="grid grid-cols-1 gap-6 mt-4">
               <div>
-                <label class="text-gray-700 dark:text-gray-200" for="original_url"> Enter a long URL to make a ShortURL <label>
+                <label class="text-purple-700 dark:text-gray-200" for="original_url"> Enter a long URL to make a ShortURL <label>
                   
                 <input name="url" id="original_url" required type="url" placeholder="https://"
-                  class="w-full block  px-4 py-2 mt-2  bg-white border border-gray-300 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring   text-black transition duration-500 ease-in-out transform border-transparent rounded-lg bg-blueGray-100 focus:border-blueGray-500 focus:bg-white  focus:shadow-outline  ring-offset-current ring-offset-2">
+                  class="w-full block  px-4 py-2 mt-2  bg-white border border-gray-300 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring   text-green-500 transition duration-500 ease-in-out transform border-transparent rounded-lg bg-blueGray-100 focus:border-blueGray-500 focus:bg-white  focus:shadow-outline  ring-offset-current ring-offset-2">
 
                   
 
               </div>
 
               <div>
-                <label class="text-gray-700 dark:text-gray-200" for="Alias"> Customize your link</label>
+                <label class="text-purple-700 dark:text-gray-200" for="Alias"> Customize your link</label>
                 <input  name="slug" id="Alias" type="text" placeholder="Alias"
-                  class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                  class="block w-full px-4 py-2 mt-2 text-green-500 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
               </div>
 
               <div>
-                <label class="text-gray-700 dark:text-gray-200" for="Expiry_date">Expiry</label>
-                <input  name="expiry" id="Expiry_date" type="datetime-local" placeholder="10 min"
-                  class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <label class="text-purple-700 dark:text-gray-200" for="Expiry_date">Expiry</label>
+                <input  name="expiry" id="Expiry_date" type="datetime-local" placeholder="19:12:2021"
+                  class="block w-full px-4 py-2 mt-2 text-yellow-600 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                   <label class="text-gray-700 md:pl-8 text-xs dark:text-gray-200">At this time , Alias will be self-destroy.</label>
               </div>
 
@@ -195,5 +195,6 @@
 
 
 </body>
+
 
 </html>
