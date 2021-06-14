@@ -12,7 +12,7 @@
   <!-- Favicons -->
   <link rel="icon" href="/images/icon_app.png">
 
-  <title>ABHI'S URL SHORTENER</title>
+  <title>Success ABHI'S URL SHORTENER</title>
   <!-- My CSS Stylesheet -->
   <link rel="stylesheet" href="style.css">
 
@@ -20,6 +20,8 @@
 </head>
 
 <body>
+  
+
 
 
 
@@ -113,8 +115,7 @@
 
                   <label>
                     <textarea name="url" id="original_url" disabled contenteditable=""
-                      class=" resize-none  md:px-3 md:py-3 w-full block md:h-52 break-normal  break-all   mt-2  bg-white  border-black dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600border-blue-500  outline-none ring   text-black transition duration-500 ease-in-out transform border-transparent rounded-lg bg-blueGray-100 border-blueGray-500 border-  shadow-outline ">"https://www.google.com/search?q=for+attribute+in+label&rlz=1C5CHFA_enIN870IN870&ei=7sXDYPjYCNqF4-EPuO6A4A0&oq=for+a&gs_lcp=Cgdnd3Mtd2l6 EJECMgQIABBDMgUILhCxAzIFCC4QsQMyAggAMgIILjIFCAAQsQMyAggAMgIIADoICAAQsQMQgwE6CAguELEDEIMBOgcIABCxAxBDOgsILhCxAxDHARCjAlDdNljsPGD_S2gAcAJ4AIAB_QGIAfgKkgEDMi02mAEAoAEBqgEHZ3dzLXdpesABAQ&sclient=gws-wiz"
-                  </textarea>
+                      class=" resize-none  md:px-3 md:py-3 w-full block md:h-52 break-normal  break-all   mt-2  bg-white  border-black dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600border-blue-500  outline-none ring   text-black transition duration-500 ease-in-out transform border-transparent rounded-lg bg-blueGray-100 border-blueGray-500 border-  shadow-outline "><%= ORIGINAL_URL %> </textarea>
 
               </div>
 
@@ -130,14 +131,13 @@
                   </div>
                 </label>
 
-                <input name="slug" id="Alias" type="text" value="qefwrgafaretrff" readonly
+                <input name="slug" id="Alias" type="text" value="<%= SHORT_URL %> " readonly
                   class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300  border-yellow-400 md:h-20 outline-none focus:ring">
-
-                  <button type="submit" name="visit" formaction="">
-                    <img src="./images/visit.svg" class="mt-2 pl-1 lg:h-8 md:h-8 h-5" alt="Copy to clipboard">
-                  </button>
-                  
-
+                  <a href='<%= SHORT_URL %>'>
+                    <button type="button" name="visit" formaction='<%= SHORT_URL %>'>
+                      <img src="./images/visit.svg" class="mt-2 pl-1 lg:h-8 md:h-8 h-5" alt="visit-url">
+                    </button>
+                  </a>
                   <button type="button" data-clipboard-target="#Alias" id="btn"">
                   <img src="./images/clippy.svg" class="mt-2 pl-1 lg:h-8 md:h-8 h-5" alt="Copy to clipboard">
                   </button>
