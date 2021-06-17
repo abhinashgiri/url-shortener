@@ -47,8 +47,8 @@ app.get('/testing', (req, res, next) => {
   console.log(d);
   let x = new Date((new Date()).toUTCString());
   console.log('x  is ',x);
-
-  res.render('success', { ORIGINAL_URL: 'https://abhinash.org', SHORT_URL: 'https://www.youtube.com/watch?v=VM-2xSaDxJc' });
+  res.sendFile(path.join(__dirname+'/public/contact.html'))
+  // res.render('success', { ORIGINAL_URL: 'https://abhinash.org', SHORT_URL: 'https://www.youtube.com/watch?v=VM-2xSaDxJc' });
 })
 
 

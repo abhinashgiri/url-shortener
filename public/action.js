@@ -1,9 +1,4 @@
 
-// setting default expiry value to 10 min 
-
-document.getElementById
-
-
 var btn = document.getElementById('btn');
 var clipboard = new ClipboardJS(btn);
 

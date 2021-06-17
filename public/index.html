@@ -14,7 +14,6 @@
   <title>ABHI'S URL SHORTENER</title>
   <!-- My CSS Stylesheet -->
   <link rel="stylesheet" href="style.css">
- 
 
 
 </head>
@@ -23,7 +22,7 @@
 
   <header class="text-gray-400 bg-gray-900 body-font">
     <div class=" container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-      <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+      <a href="/" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
         <img src="/images/url-shorten.svg" alt="url-shorten" class="h-16">
         <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
           stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-blue-500 rounded-full"
@@ -31,12 +30,12 @@
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
         </svg> -->
         
-        <span class="ml-3 text-xl">Shortify</span>
+        <span class="ml-3 text-4xl">Shortify</span>
       </a>
       <nav class="  md:ml-auto flex flex-wrap  float-right">
         <a class="mr-5 hover:text-white   ">How It Works</a>
-        <a class="mr-5 hover:text-white  ">Feedback</a>
-        <a class="mr-5 hover:text-white">Contact Us</a>
+        <a href="./contact.html" class="mr-5 hover:text-white  ">Feedback</a>
+
         <!-- <a class="mr-5 hover:text-white">Fourth Link</a> -->
       </nav>
       <!-- <button class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-yellow-50 rounded text-base mt-4 md:mt-0">Button
@@ -70,10 +69,8 @@
                   
                 <input name="url" id="original_url" required type="url" placeholder="https://"
                   class="w-full block  px-4 py-2 mt-2  bg-white border border-gray-300 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring   text-green-500 transition duration-500 ease-in-out transform border-transparent rounded-lg bg-blueGray-100 focus:border-blueGray-500 focus:bg-white  focus:shadow-outline  ring-offset-current ring-offset-2">
-
-                  
-
               </div>
+
 
               <div>
                 <label class="text-purple-700 dark:text-gray-200" for="Alias"> Customize your link</label>
@@ -83,9 +80,9 @@
 
               <div>
                 <label class="text-purple-700 dark:text-gray-200" for="Expiry_date">Expiry</label>
-                <input  name="expiry" id="Expiry_date" type="datetime-local" placeholder="19:12:2021"
+                <input  name="expiry" id="Expiry_date" type="datetime-local" onload="get_Date_Time()" 
                   class="block w-full px-4 py-2 mt-2 text-yellow-600 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
-                  <label class="text-gray-700 md:pl-8 text-xs dark:text-gray-200">At this time , Alias will be self-destroy.</label>
+                  <label class="text-gray-700 md:pl-8 text-xs dark:text-gray-200">At this time (minimum 5 minutes) , Alias will self-destroy.</label>
               </div>
 
 
@@ -102,37 +99,37 @@
       <!-- <img alt="feature" class="object-cover object-center h-full w-full" src="https://dummyimage.com/460x500"> -->
       <div class="flex flex-col flex-wrap w-7 lg:py-6 -mb-10  lg:w-1/2 md:w-1/2 lg:pl-12 md:px-8 lg:text-left text-center">
         <div class="flex flex-col mb-10 lg:items-start  md:items-baseline   sm:items-baseline  items-center">
-          <div class="flex pl-4">
+          <div class="flex pl-6">
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
               class="text-blue-400 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
               <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
               <path d="M22 4L12 14.01l-3-3"></path>
             </svg>
-            <h2 class="text-white text-lg title-font font-medium mb-3 flex "> Easy Link Shortening</h2>
+            <h2 class="text-white text-xl title-font font-medium mb-3 flex "> Easy Link Shortening</h2>
           </div>
-          <div class="flex pl-4">
+          <div class="flex pl-6 pt-2">
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
               class="text-blue-400 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
               <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
               <path d="M22 4L12 14.01l-3-3"></path>
             </svg>
-            <h2 class="text-white text-lg title-font font-medium mb-3 flex "> Customized ShortURLs</h2>
+            <h2 class="text-white text-xl title-font font-medium mb-3 flex "> Customized ShortURLs</h2>
           </div>
-          <div class="flex pl-4">
+          <div class="flex pl-6 pt-2">
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
               class="text-blue-400 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
               <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
               <path d="M22 4L12 14.01l-3-3"></path>
             </svg>
-            <h2 class="text-white text-lg title-font font-medium mb-3 flex">Anonymous usage</h2>
+            <h2 class="text-white text-xl title-font font-medium mb-3 flex">Anonymous usage</h2>
           </div>
-          <div class="flex pl-4 ">
+          <div class="flex pl-6 pt-2">
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
               class="text-blue-400 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
               <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
               <path d="M22 4L12 14.01l-3-3"></path>
             </svg>
-            <h2 class="text-white text-lg title-font font-medium mb-3 flex">Expiry Selection</h2>
+            <h2 class="text-white text-xl title-font font-medium mb-3 flex">Expiry Selection</h2>
           </div>
         </div>
       </div>
@@ -195,6 +192,7 @@
 
 
 </body>
+<script src="./time.js"></script>
 
 
 </html>
