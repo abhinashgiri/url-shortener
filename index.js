@@ -39,6 +39,8 @@ app.post('/testing', (req, res, next) => {
 })
 app.get('/testing', (req, res, next) => {
 
+
+  
   let d = new Date();
   console.log(d);
   d=d.toUTCString();
@@ -47,8 +49,8 @@ app.get('/testing', (req, res, next) => {
   console.log(d);
   let x = new Date((new Date()).toUTCString());
   console.log('x  is ',x);
-  res.sendFile(path.join(__dirname+'/public/contact.html'))
-  // res.render('success', { ORIGINAL_URL: 'https://abhinash.org', SHORT_URL: 'https://www.youtube.com/watch?v=VM-2xSaDxJc' });
+  // res.sendFile(path.join(__dirname+'/public/contact.html'))
+  res.render('success', { ORIGINAL_URL: 'https://abhinash.org', SHORT_URL: 'https://www.youtube.com/watch?v=VM-2xSaDxJc' });
 })
 
 
@@ -97,7 +99,7 @@ app.post('/service', async (req, res, next) => {
           const slug_in_use = obj.slug_used;
           const createdOn = obj.createdOn;
           if (slug_in_use == true) {
-            res.send('Slug already in use\n');
+            res.send(`Slug already in use\n${res.body}`);
             return;
           }
           console.log(`slug_in_use : ${slug_in_use}`);
@@ -145,7 +147,7 @@ app.use((error, req, res, next) => {
 // 404 route
 app.use(function (req, res, next) {
   console.log('404 Error Handled Sucessfully !');
-  res.status(404).sendFile(path.join(__dirname + '/public/Not_Found.html'));
+  res.status(200).sendFile(path.join(__dirname + '/public/Not_Found.html'));
 })
 
 

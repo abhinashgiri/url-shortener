@@ -14,13 +14,20 @@
   <title>ABHI'S URL SHORTENER</title>
   <!-- My CSS Stylesheet -->
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dark.css">
+  <script  src='./sweetalert2.min.js'></script>
 
 
 </head>
 
+
 <body>
+  
+
+  
 
   <header class="text-gray-400 bg-gray-900 body-font">
+
     <div class=" container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
       <a href="/" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
         <img src="/images/url-shorten.svg" alt="url-shorten" class="h-16">
@@ -29,7 +36,7 @@
           viewBox="0 0 24 24">
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
         </svg> -->
-        
+
         <span class="ml-3 text-4xl">Shortify</span>
       </a>
       <nav class="  md:ml-auto flex flex-wrap  float-right">
@@ -50,39 +57,41 @@
 
 
 
-  
-    
+
+
 
   <!-- Forms Section  -->
   <section class="text-gray-400 bg-gray-900 body-font w-full">
     <h2 class="text-4xl font-semibold text-white capitalize text-center md:pt-6">Welcome Guest !</h2>
     <div class=" container px-5 py-24 mx-auto flex flex-wrap">
-      
+
       <div class="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden">
-      
+
         <section class=" max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
           <!-- <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Account settings</h2> -->
           <form action="/service" method="POST">
             <div class="grid grid-cols-1 gap-6 mt-4">
               <div>
-                <label class="text-purple-700 dark:text-gray-200" for="original_url"> Enter a long URL to make a ShortURL <label>
-                  
-                <input name="url" id="original_url" required type="url" placeholder="https://"
-                  class="w-full block  px-4 py-2 mt-2  bg-white border border-gray-300 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring   text-green-500 transition duration-500 ease-in-out transform border-transparent rounded-lg bg-blueGray-100 focus:border-blueGray-500 focus:bg-white  focus:shadow-outline  ring-offset-current ring-offset-2">
+                <label class="text-purple-700 dark:text-gray-200" for="original_url"> Enter a long URL to make a
+                  ShortURL <label>
+
+                    <input name="url" id="original_url" required type="url" placeholder="https://"
+                      class="w-full block  px-4 py-2 mt-2  bg-white border border-gray-300 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring   text-green-500 transition duration-500 ease-in-out transform border-transparent rounded-lg bg-blueGray-100 focus:border-blueGray-500 focus:bg-white  focus:shadow-outline  ring-offset-current ring-offset-2">
               </div>
 
 
               <div>
                 <label class="text-purple-700 dark:text-gray-200" for="Alias"> Customize your link</label>
-                <input  name="slug" id="Alias" type="text" placeholder="Alias"
+                <input name="slug" id="Alias" type="text" placeholder="Alias"
                   class="block w-full px-4 py-2 mt-2 text-green-500 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
               </div>
 
               <div>
                 <label class="text-purple-700 dark:text-gray-200" for="Expiry_date">Expiry</label>
-                <input  name="expiry" id="Expiry_date" type="datetime-local" onload="get_Date_Time()" 
+                <input name="expiry" id="Expiry_date" type="datetime-local" onload="get_Date_Time()"
                   class="block w-full px-4 py-2 mt-2 text-yellow-600 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
-                  <label class="text-gray-700 md:pl-8 text-xs dark:text-gray-200">At this time (minimum 5 minutes) , Alias will self-destroy.</label>
+                <label class="text-gray-700 md:pl-8 text-xs dark:text-gray-200">At this time (minimum 5 minutes) , Alias
+                  will self-destroy.</label>
               </div>
 
 
@@ -97,7 +106,8 @@
         </section>
       </div>
       <!-- <img alt="feature" class="object-cover object-center h-full w-full" src="https://dummyimage.com/460x500"> -->
-      <div class="flex flex-col flex-wrap w-7 lg:py-6 -mb-10  lg:w-1/2 md:w-1/2 lg:pl-12 md:px-8 lg:text-left text-center">
+      <div
+        class="flex flex-col flex-wrap w-7 lg:py-6 -mb-10  lg:w-1/2 md:w-1/2 lg:pl-12 md:px-8 lg:text-left text-center">
         <div class="flex flex-col mb-10 lg:items-start  md:items-baseline   sm:items-baseline  items-center">
           <div class="flex pl-6">
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
@@ -157,10 +167,13 @@
       <p class="text-sm text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4">© 2021
         Shortify —
         <a href="https://twitter.com/abhinash_giri14" class="text-gray-500 ml-1" target="_blank"
-          rel="noopener noreferrer">@abhinash_giri</a>
+        >@abhinash_giri</a>
       </p>
+
+      
+
       <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-  
+
         <a class=" text-gray-400 md:mr-24 mr-10" href="https://www.linkedin.com/in/abhinash-kumar-giri-495720197/">
           <img src="/images/linked-in.svg" alt="LinkedIn-icon" class="h-11">
         </a>
@@ -175,24 +188,13 @@
         <a class="text-gray-400 md:mr-24 mr-10 " href="https://twitter.com/abhinash_giri14">
           <img src="/images/twitter.svg" alt="twitter-icon" class="h-10">
         </a>
-        
-
       </span>
+      
     </div>
+    <div id="clock" class=" flex flex-row-reverse mr-8 text-green-300 "></div>
+    
   </footer>
-
-
-
-
-
-
-
-
-
-
-
 </body>
+
 <script src="./time.js"></script>
-
-
 </html>
