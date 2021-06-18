@@ -1,5 +1,9 @@
-// setting default expiry value to 10 min 
 
+
+const homePage = "http://localhost:5000/";
+
+
+// setting default expiry value to 10 min 
 function get_Date_Time()
 {
   var x = document.getElementById("Expiry_date");
@@ -26,14 +30,6 @@ function get_Date_Time()
 }
 
 
-async function slug_in_use()
-{
-  Swal.fire({
-    title: 'Alias in use !',
-    text:'Please , Choose a different one.',
-    icon: 'info',
-  })
-}
 function currentTime() {
   var date = new Date(); /* creating object of Date class */
   var hour = date.getHours();
@@ -48,7 +44,6 @@ function currentTime() {
   document.getElementById("clock").innerText = hour + " : " + min + " : " + sec + " " + midday; /* adding time to the div */
     var t = setTimeout(currentTime, 1000); /* setting timer */
 }
-
 function updateTime(k) { /* appending 0 before time elements if less than 10 */
   if (k < 10) {
     return "0" + k;
@@ -58,40 +53,60 @@ function updateTime(k) { /* appending 0 before time elements if less than 10 */
   }
 }
 
+async function slug_in_use()
+{
+  Swal.fire({
+    title: 'Alias is not available !',
+    text:'Please , Choose a different one.',
+    icon: 'info',
+    confirmButtonText:'Okay'
+  }).then((result)=>{
+    if(result.isConfirmed)
+    {
+      window.location.replace(homePage);
+    }
+  })
+}
 
+async function feedback()
+{
+  Swal.fire({
+    title: 'Thank You !',
+    text:'We value your feedback.',
+    icon: 'success',
+    confirmButtonText:'Okay'
+  }).then((result)=>{
+    if(result.isConfirmed)
+    {
+      window.location.replace(homePage);
+    }
+  })
+}
+
+async function slug_expired()
+{
+  Swal.fire({
+    title: 'Alias Doesn\'t exist !',
+    text:'Probably expired, please create one.',
+    icon: 'error',
+    confirmButtonText:'Okay'
+  }).then((result)=>{
+    if(result.isConfirmed)
+    {
+      window.location.replace(homePage);
+    }
+  })
+}
 
 // fire callback on loading everything  the page
 window.onload = ()=>{
   get_Date_Time();
   currentTime();
-  // slug_in_use();
-  
-}
+  var x = document.getElementById('show-popup');
+  if(x)slug_in_use();
+  x = document.getElementById('expired');
+  if(x)slug_expired();
+  x = document.getElementById('feedback');
+  if(x)feedback();
 
-// let timerInterval
-// Swal.fire({
-//   title: 'Loading!',
-//   html: 'I will close in <b></b> milliseconds.',
-//   timer: 2000,
-//   timerProgressBar: true,
-//   didOpen: () => {
-//     Swal.showLoading()
-//     timerInterval = setInterval(() => {
-//       const content = Swal.getHtmlContainer()
-//       if (content) {
-//         const b = content.querySelector('b')
-//         if (b) {
-//           b.textContent = Swal.getTimerLeft()
-//         }
-//       }
-//     }, 100)
-//   },
-//   willClose: () => {
-//     clearInterval(timerInterval)
-//   }
-// }).then((result) => {
-//   /* Read more about handling dismissals below */
-//   if (result.dismiss === Swal.DismissReason.timer) {
-//     console.log('I was closed by the timer')
-//   }
-// })
+}

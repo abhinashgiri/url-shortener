@@ -23,6 +23,16 @@
 
 <body>
   
+  <% if (title==='slug_in_use') { %>
+   <div id=show-popup ></div>
+  <% } else if (title==='expired') { %>
+    <div id="expired"></div>
+  <% } else if (title==='feedback') { %>
+    <div id="feedback"></div>
+  <% } %>
+   
+   
+   
 
   
 
@@ -196,5 +206,5 @@
   </footer>
 </body>
 
-<script src="./time.js"></script>
+<script src="../time.js"></script>
 </html>

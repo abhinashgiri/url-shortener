@@ -7,7 +7,7 @@ const schedule = require('node-schedule');
 
 const input_validation = require('./validation');
 const { createEntry, getOriginalUrl, removeEntry } = require('./database');
-const { assert } = require('console');
+const {AddFeedback} = require('./feedback')
 
 
 
@@ -58,6 +58,10 @@ app.get('/testing', (req, res, next) => {
 const port = process.env.PORT || 5000;
 
 
+app.get('/',(req,res)=>{
+  res.render('index',{title:'null'});
+})
+
 
 // redirect to original url when given a shorten url by querying the database for original url
 app.get('/:id', (req, res, next) => {
@@ -69,7 +73,8 @@ app.get('/:id', (req, res, next) => {
     .then((result) => {
       // probably the entry expired or did not exist
       if (result.length == 0) {
-        res.send('No Entry found with requested slug, probably expired\n Try creating new Entry !');
+        req.body.title = 'expired';
+        res.render('index',{title:'expired'})
         return;
       }
       console.log(`originalUrl : ${result[0].url}`);
@@ -99,7 +104,7 @@ app.post('/service', async (req, res, next) => {
           const slug_in_use = obj.slug_used;
           const createdOn = obj.createdOn;
           if (slug_in_use == true) {
-            res.send(`Slug already in use\n${res.body}`);
+            res.render('index',{title:'slug_in_use',slug:req.body.slug});
             return;
           }
           console.log(`slug_in_use : ${slug_in_use}`);
@@ -128,6 +133,12 @@ app.post('/service', async (req, res, next) => {
   catch (error) {
     next(error);
   }
+})
+
+// feedback route 
+app.post('/feedback',(req,res)=>{
+  AddFeedback(req.body.name,req.body.email,req.body.message);
+  res.render('index',{title:'feedback'});
 })
 
 
