@@ -9,7 +9,8 @@ const input_validation = require('./validation');
 const { createEntry, getOriginalUrl, removeEntry } = require('./database');
 const {AddFeedback} = require('./feedback')
 
-
+// "build": "tailwindcss build ./public/src/tailwind-styles.css -o ./public/style.css"
+const homePage = "https://urlshorify.herokuapp.com/";
 const app = express();
 
 app.use(express.json());
@@ -108,8 +109,8 @@ app.post('/service', async (req, res, next) => {
             })
           })
 
-          const domain = 'localhost';
-          const link = 'http://'+domain +':'+`${port}`+'/'+req.body.slug;
+          
+          const link = homePage+req.body.slug;
           console.log(link);
           res.render('success', { ORIGINAL_URL: req.body.url, SHORT_URL:link});
         })
