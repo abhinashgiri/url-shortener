@@ -10,9 +10,7 @@ const { createEntry, getOriginalUrl, removeEntry } = require('./database');
 const {AddFeedback} = require('./feedback')
 
 
-
 const app = express();
-
 
 app.use(express.json());
 
