@@ -38,19 +38,8 @@ app.post('/testing', (req, res, next) => {
 
 })
 app.get('/testing', (req, res, next) => {
-
-
-  
-  let d = new Date();
-  console.log(d);
-  d=d.toUTCString();
-  console.log(d);
-  d=new Date(d);
-  console.log(d);
-  let x = new Date((new Date()).toUTCString());
-  console.log('x  is ',x);
-  // res.sendFile(path.join(__dirname+'/public/contact.html'))
-  res.render('success', { ORIGINAL_URL: 'https://abhinash.org', SHORT_URL: 'https://www.youtube.com/watch?v=VM-2xSaDxJc' });
+  res.sendFile(path.join(__dirname+'/public/about.html'));
+  // res.render('success', { ORIGINAL_URL: 'https://abhinash.org', SHORT_URL: 'https://www.youtube.com/watch?v=VM-2xSaDxJc' });
 })
 
 

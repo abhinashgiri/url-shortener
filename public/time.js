@@ -7,7 +7,10 @@ const homePage = "http://localhost:5000/";
 function get_Date_Time()
 {
   var x = document.getElementById("Expiry_date");
-  if(!x)return;
+  if(!x)
+  {
+    return;
+  }
   // convert to local date string dd/mm/yyyy, hh:mm:ss
   let d =  new Date();
   // 5 min later to current time
@@ -100,7 +103,14 @@ async function slug_expired()
 
 // fire callback on loading everything  the page
 window.onload = ()=>{
-  get_Date_Time();
+  var l = document.getElementById("Expiry_date");
+  if(l)
+  {
+    get_Date_Time();
+    setInterval(get_Date_Time,60000); // every minute
+  }
+  
+
   currentTime();
   var x = document.getElementById('show-popup');
   if(x)slug_in_use();
