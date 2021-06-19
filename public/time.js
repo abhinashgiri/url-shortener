@@ -1,6 +1,6 @@
 
 
-const homePage = "http://localhost:5000/";
+const homePage = "https://urlshorify.herokuapp.com/";
 
 
 // setting default expiry value to 10 min 
