@@ -1,5 +1,4 @@
 
-
 const homePage = "https://urlshorify.herokuapp.com/";
 
 
@@ -60,7 +59,7 @@ async function slug_in_use()
 {
   Swal.fire({
     title: 'Alias is not available !',
-    text:'Please , Choose a different one.',
+    text:'Please choose a different one.',
     icon: 'info',
     confirmButtonText:'Okay'
   }).then((result)=>{
@@ -118,5 +117,9 @@ window.onload = ()=>{
   if(x)slug_expired();
   x = document.getElementById('feedback');
   if(x)feedback();
+  x = document.getElementById('home-button');
+  x.onclick = ()=>{
+    location.href = homePage;
+  }
 
 }
