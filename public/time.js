@@ -8,6 +8,7 @@ function get_Date_Time()
   var x = document.getElementById("Expiry_date");
   if(!x)
   {
+    console.log(x);
     return;
   }
   // convert to local date string dd/mm/yyyy, hh:mm:ss
@@ -114,12 +115,16 @@ window.onload = ()=>{
   var x = document.getElementById('show-popup');
   if(x)slug_in_use();
   x = document.getElementById('expired');
+
+
   if(x)slug_expired();
   x = document.getElementById('feedback');
+
+
   if(x)feedback();
+  
   x = document.getElementById('home-button');
-  x.onclick = ()=>{
+  if(x)x.onclick = ()=>{
     location.href = homePage;
   }
-
 }

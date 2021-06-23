@@ -79,7 +79,7 @@
 
         <section class=" max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
           <!-- <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Account settings</h2> -->
-          <form action="/service" method="POST">
+          <form action="/service" method="POST" autocomplete="off">
             <div class="grid grid-cols-1 gap-6 mt-4">
               <div>
                 <label class="text-purple-700 dark:text-gray-200" for="original_url"> Enter a long URL to make a
@@ -100,12 +100,8 @@
                 <label class="text-purple-700 dark:text-gray-200" for="Expiry_date">Expiry</label>
                 <input name="expiry" id="Expiry_date" type="datetime-local" onload="get_Date_Time()"
                   class="block w-full px-4 py-2 mt-2 text-yellow-600 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
-                <label class="text-gray-700 md:pl-8 text-xs dark:text-gray-200">At this time (minimum 5 minutes) , Alias
-                  will self-destroy.</label>
+                <label class="text-gray-700 md:pl-8 text-xs dark:text-gray-200">At this time (minimum 5 minutes) , Alias will self-destroy.</label>
               </div>
-
-
-
             </div>
 
             <div class="flex justify-end mt-6">
