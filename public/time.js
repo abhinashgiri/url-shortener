@@ -1,5 +1,5 @@
 
-const homePage = "https://urlshorify.herokuapp.com/";
+const homePage = "http://localhost:5000";
 
 
 document.getElementById('noExpiry').onchange = function() {
@@ -116,6 +116,23 @@ async function slug_expired()
   })
 }
 
+
+async function blocked_hostname()
+{
+  Swal.fire({
+    title: 'URL domain banned !',
+    text:'Try another URL.',
+    icon: 'error',
+    confirmButtonText:'Okay'
+  }).then((result)=>{
+    if(result.isConfirmed)
+    {
+      window.location.replace(homePage);
+    }
+  })
+}
+
+
 // fire callback on loading everything  the page
 window.onload = ()=>{
   var l = document.getElementById("Expiry_date");
@@ -138,8 +155,13 @@ window.onload = ()=>{
 
   if(x)feedback();
   
+  // 404 page home button 
   x = document.getElementById('home-button');
   if(x)x.onclick = ()=>{
     location.href = homePage;
   }
+
+  // URL domain banned
+  x=document.getElementById('urlshortify');
+  if(x)blocked_hostname();
 }

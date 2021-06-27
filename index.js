@@ -4,7 +4,7 @@ const helmet = require('helmet');
 const path = require('path');
 const date = require('date-and-time');
 const schedule = require('node-schedule');
-
+const {URL} = require('url'); // for geting hostname of url so that we can ban self domain
 const input_validation = require('./validation');
 const {
   createEntry,
@@ -16,7 +16,7 @@ const {
 } = require('./feedback')
 
 // "build": "tailwindcss build ./public/src/tailwind-styles.css -o ./public/style.css"
-const homePage = "https://urlshorify.herokuapp.com/";
+const homePage = "http://localhost:5000";
 const app = express();
 
 app.use(express.json());
@@ -36,19 +36,13 @@ app.set('views', 'public/views');
 
 
 
-app.post('/testing', (req, res, next) => {
-  let now = Date.parse(req.body.expiry);
-  now = new Date(now);
-  console.log(now);
-  now = date.format(now, "YYYY/MM/DD HH:mm:ss");
-  console.log(now);
 
-})
-app.get('/testing', (req, res, next) => {
-  console.log(req.body);
-  res.sendFile(path.join(__dirname + '/public/about.html'));
-  // res.render('success', { ORIGINAL_URL: 'https://abhinash.org', SHORT_URL: 'https://www.youtube.com/watch?v=VM-2xSaDxJc' });
-})
+
+// app.get('/testing', (req, res, next) => {
+//   console.log(req.body);
+//   res.sendFile(path.join(__dirname + '/public/about.html'));
+//   // res.render('success', { ORIGINAL_URL: 'https://abhinash.org', SHORT_URL: 'https://www.youtube.com/watch?v=VM-2xSaDxJc' });
+// })
 
 
 
@@ -97,7 +91,16 @@ app.post('/service', async (req, res, next) => {
     // await input_validation(req,res,next);
     // res.send(req.body);
 
+    //  ban same domain
     console.log(req.body);
+    const urlObject = new URL(req.body.url);
+    if (urlObject.hostname == 'urlshorify.herokuapp.com') {
+      res.render('index', {
+        title: 'urlshortify'
+      });
+      return;
+    }
+
     await input_validation(req, res, next).then(() => {
       createEntry(req.body.url, req.body.slug)
         .then((obj) => {
@@ -113,7 +116,7 @@ app.post('/service', async (req, res, next) => {
           }
           console.log(`slug_in_use : ${slug_in_use}`);
 
-          if (req.body.neverExpire!='on') {
+          if (req.body.neverExpire != 'on') {
             console.log('checkbox is not selected');
             // schedule auto deletion at expiry time
             let expiry = req.body.expiry;
@@ -127,7 +130,6 @@ app.post('/service', async (req, res, next) => {
               })
             })
           }
-
 
 
           const link = homePage + req.body.slug;
