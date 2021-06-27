@@ -16,7 +16,7 @@ const {
 } = require('./feedback')
 
 // "build": "tailwindcss build ./public/src/tailwind-styles.css -o ./public/style.css"
-const homePage = "http://localhost:5000";
+const homePage = "https://urlshorify.herokuapp.com/";
 const app = express();
 
 app.use(express.json());
