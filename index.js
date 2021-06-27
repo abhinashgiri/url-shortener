@@ -6,8 +6,14 @@ const date = require('date-and-time');
 const schedule = require('node-schedule');
 
 const input_validation = require('./validation');
-const { createEntry, getOriginalUrl, removeEntry } = require('./database');
-const {AddFeedback} = require('./feedback')
+const {
+  createEntry,
+  getOriginalUrl,
+  removeEntry
+} = require('./database');
+const {
+  AddFeedback
+} = require('./feedback')
 
 // "build": "tailwindcss build ./public/src/tailwind-styles.css -o ./public/style.css"
 const homePage = "https://urlshorify.herokuapp.com/";
@@ -17,7 +23,9 @@ app.use(express.json());
 
 // is used to populate req.body property with user data to look like json object
 // key=value & key=value { these type of data , usually in html forms }
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+  extended: true
+}));
 
 app.use(cors());
 app.use(helmet());
@@ -37,7 +45,8 @@ app.post('/testing', (req, res, next) => {
 
 })
 app.get('/testing', (req, res, next) => {
-  res.sendFile(path.join(__dirname+'/public/about.html'));
+  console.log(req.body);
+  res.sendFile(path.join(__dirname + '/public/about.html'));
   // res.render('success', { ORIGINAL_URL: 'https://abhinash.org', SHORT_URL: 'https://www.youtube.com/watch?v=VM-2xSaDxJc' });
 })
 
@@ -46,8 +55,10 @@ app.get('/testing', (req, res, next) => {
 const port = process.env.PORT || 5000;
 
 
-app.get('/',(req,res)=>{
-  res.render('index',{title:'null'});
+app.get('/', (req, res) => {
+  res.render('index', {
+    title: 'null'
+  });
 })
 
 
@@ -62,7 +73,9 @@ app.get('/:id', (req, res, next) => {
       // probably the entry expired or did not exist
       if (result.length == 0) {
         req.body.title = 'expired';
-        res.render('index',{title:'expired'})
+        res.render('index', {
+          title: 'expired'
+        })
         return;
       }
       console.log(`originalUrl : ${result[0].url}`);
@@ -83,7 +96,7 @@ app.post('/service', async (req, res, next) => {
   try {
     // await input_validation(req,res,next);
     // res.send(req.body);
-  
+
     console.log(req.body);
     await input_validation(req, res, next).then(() => {
       createEntry(req.body.url, req.body.slug)
@@ -92,41 +105,52 @@ app.post('/service', async (req, res, next) => {
           const slug_in_use = obj.slug_used;
           const createdOn = obj.createdOn;
           if (slug_in_use == true) {
-            res.render('index',{title:'slug_in_use',slug:req.body.slug});
+            res.render('index', {
+              title: 'slug_in_use',
+              slug: req.body.slug
+            });
             return;
           }
           console.log(`slug_in_use : ${slug_in_use}`);
 
-          // schedule auto deletion at expiry time
-          let expiry = req.body.expiry;
-          expiry = new Date(expiry);
-          expiry = expiry.toUTCString();
-          expiry = new Date(expiry);
-          console.log(`created on ${createdOn}, expires at ${date.format(expiry, 'YYYY/MM/DD HH:mm:ss')}`);
-          schedule.scheduleJob(expiry, async () => {
-            await removeEntry(req.body.slug).then((result) => {
-              console.log(`Deleted entry ${result}`);
+          if (req.body.neverExpire!='on') {
+            console.log('checkbox is not selected');
+            // schedule auto deletion at expiry time
+            let expiry = req.body.expiry;
+            expiry = new Date(expiry);
+            expiry = expiry.toUTCString();
+            expiry = new Date(expiry);
+            console.log(`created on ${createdOn}, expires at ${date.format(expiry, 'YYYY/MM/DD HH:mm:ss')}`);
+            schedule.scheduleJob(expiry, async () => {
+              await removeEntry(req.body.slug).then((result) => {
+                console.log(`Deleted entry ${result}`);
+              })
             })
-          })
+          }
 
-          
-          const link = homePage+req.body.slug;
+
+
+          const link = homePage + req.body.slug;
           console.log(link);
-          res.render('success', { ORIGINAL_URL: req.body.url, SHORT_URL:link});
+          res.render('success', {
+            ORIGINAL_URL: req.body.url,
+            SHORT_URL: link
+          });
         })
 
     });
 
-  }
-  catch (error) {
+  } catch (error) {
     next(error);
   }
 })
 
 // feedback route 
-app.post('/feedback',(req,res)=>{
-  AddFeedback(req.body.name,req.body.email,req.body.message);
-  res.render('index',{title:'feedback'});
+app.post('/feedback', (req, res) => {
+  AddFeedback(req.body.name, req.body.email, req.body.message);
+  res.render('index', {
+    title: 'feedback'
+  });
 })
 
 
@@ -155,6 +179,3 @@ app.use(function (req, res, next) {
 app.listen(port, () => {
   console.log(`Listening on http://localhost:${port}`);
 })
-
-
-

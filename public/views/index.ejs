@@ -63,13 +63,6 @@
     </div>
   </header>
 
-
-
-
-
-
-
-
   <!-- Forms Section  -->
   <section class="text-gray-400 bg-gray-900 body-font w-full">
     <h2 class="text-4xl font-semibold text-white capitalize text-center md:pt-6">Welcome Guest !</h2>
@@ -97,11 +90,17 @@
               </div>
 
               <div>
-                <label class="text-purple-700 dark:text-gray-200" for="Expiry_date">Expiry</label>
+                <label id="expiry-label" class="text-purple-700 dark:text-gray-200" for="Expiry_date">Expiry</label>
                 <input name="expiry" id="Expiry_date" type="datetime-local" onload="get_Date_Time()"
                   class="block w-full px-4 py-2 mt-2 text-yellow-600 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
-                <label class="text-gray-700 md:pl-8 text-xs dark:text-gray-200">At this time (minimum 5 minutes) , Alias will self-destroy.</label>
+                <label id="alias-subHeading" class="text-gray-700 md:pl-8 text-xs dark:text-gray-200">At this time (minimum 5 minutes) , Alias will self-destroy.</label>
               </div>
+            </div>
+
+            <div class="flex mt-6">
+              <label class="inline-flex items-center mt-3" for="noExpiry">
+                <input id="noExpiry" name="neverExpire" type="checkbox" class="form-checkbox h-4 w-5" ><span class="ml-2 text-purple-700">Never Expire</span>
+            </label>
             </div>
 
             <div class="flex justify-end mt-6">

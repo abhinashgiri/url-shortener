@@ -2,6 +2,21 @@
 const homePage = "https://urlshorify.herokuapp.com/";
 
 
+document.getElementById('noExpiry').onchange = function() {
+  let expiryDate =  document.getElementById('Expiry_date')
+  expiryDate.disabled = this.checked;
+  let hide;
+  if(this.checked)hide="none";
+  else hide="block"
+  let expiryLabel = document.getElementById('expiry-label');
+  let aliasSub = document.getElementById('alias-subHeading');
+  expiryDate.style.display=hide;
+  expiryLabel.style.display=hide;
+  aliasSub.style.display=hide;
+
+};
+
+
 // setting default expiry value to 10 min 
 function get_Date_Time()
 {
