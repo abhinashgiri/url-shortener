@@ -1,21 +1,18 @@
 const mongoose = require('mongoose');
 
 
-const string_uri = 'mongodb+srv://Abhinash:rcFEcOJKLfoH6Ctv@cluster0.7w8cs.mongodb.net/myFirstDatabase?retryWrites=true/shortener';
+const string_uri = 'mongodb+srv://Abhinash:rcFEcOJKLfoH6Ctv@cluster0.7w8cs.mongodb.net/Shortify?retryWrites=true/shortener';
+
+
 mongoose.connect(string_uri,{'useNewUrlParser':true, 'useUnifiedTopology':true})
 .then(()=>console.log("Sucessfully Connected to MongoDB ..."))
 .catch((error)=>console.log(`Database Error : ${error}`));
 
 
+// require models
+const {urlShortener} = require('./models/url_shortened');
+const {Feedback}  = require('./models/feedback')
 
-const urlSchema = {
-  url : String,
-  slug: String,
-  // changed from timestamp to Date instance
-  createdOn:{type:Date,default: new Date()}
-} 
-
-const urlShortener = mongoose.model('urlShortener',urlSchema);
 
 
 async function createEntry(originalUrl,shortUrl)
@@ -64,5 +61,18 @@ async function getOriginalUrl (slug)
 // console.log('Executed');
 
 
-module.exports={createEntry,getOriginalUrl,removeEntry};
+async function AddFeedback(name,email,message)
+{
+
+  let entry = new Feedback({
+    name  : name,
+    email : email,
+    message:message
+  })
+  entry = await entry.save();
+  console.log(`Feedback Added on database\n: ${entry}`);
+}
+
+
+module.exports={createEntry,getOriginalUrl,removeEntry,AddFeedback};
 

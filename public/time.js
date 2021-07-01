@@ -1,5 +1,6 @@
 
 const homePage = "https://urlshorify.herokuapp.com/";
+// const homePage = "http://localhost:5000/";
 
 
 document.getElementById('noExpiry').onchange = function() {
@@ -17,7 +18,7 @@ document.getElementById('noExpiry').onchange = function() {
 };
 
 
-// setting default expiry value to 10 min 
+// setting default expiry value to 5 min 
 function get_Date_Time()
 {
   var x = document.getElementById("Expiry_date");
@@ -133,7 +134,7 @@ async function blocked_hostname()
 }
 
 
-// fire callback on loading everything  the page
+// fire callback on loading   the page
 window.onload = ()=>{
   var l = document.getElementById("Expiry_date");
   if(l)
