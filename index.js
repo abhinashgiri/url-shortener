@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -12,6 +14,8 @@ const {
   removeEntry,
   AddFeedback
 } = require('./database');
+
+
 
 
 // "build": "tailwindcss build ./public/src/tailwind-styles.css -o ./public/style.css"

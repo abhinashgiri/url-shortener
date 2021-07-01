@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
+const key  = process.env.MONGO_SECRET ; // secret key to connect to database
+const user  = process.env.MONGO_USER;   // db user
+const connectionString = 'mongodb+srv://'+user+':'+key+'@cluster0.7w8cs.mongodb.net/Shortify?retryWrites=true&w=majority'
 
-const string_uri = 'mongodb+srv://Abhinash:rcFEcOJKLfoH6Ctv@cluster0.7w8cs.mongodb.net/Shortify?retryWrites=true/shortener';
-
-
-mongoose.connect(string_uri,{'useNewUrlParser':true, 'useUnifiedTopology':true})
+mongoose.connect(connectionString,{'useNewUrlParser':true, 'useUnifiedTopology':true})
 .then(()=>console.log("Sucessfully Connected to MongoDB ..."))
 .catch((error)=>console.log(`Database Error : ${error}`));
 
@@ -50,15 +50,6 @@ async function getOriginalUrl (slug)
   console.log(`getOriginalurl , result : ${result}`);
   return result;
 }
-
-// createEntry('https://google.com','ae23zS').then(()=>{
-//   getOriginalUrl("ae23zS").then((returned_value_of_promise)=>{
-//     console.log( `returned_value_of_promise ${returned_value_of_promise}`);
-//   // removeEntry('ae23zS');
-//   })
-// });
-
-// console.log('Executed');
 
 
 async function AddFeedback(name,email,message)
