@@ -55,7 +55,8 @@ const port = process.env.PORT || 5000;
 
 app.get('/', (req, res) => {
   res.render('index', {
-    title: 'null'
+    title: 'null',
+    message:'null'
   });
 })
 
@@ -100,7 +101,8 @@ app.post('/service', async (req, res, next) => {
     const urlObject = new URL(req.body.url);
     if (urlObject.hostname == 'urlshorify.herokuapp.com') {
       res.render('index', {
-        title: 'urlshortify'
+        title: 'urlshortify',
+        message:'null'
       });
       return;
     }
@@ -114,7 +116,7 @@ app.post('/service', async (req, res, next) => {
           if (slug_in_use == true) {
             res.render('index', {
               title: 'slug_in_use',
-              slug: req.body.slug
+              message:'null'
             });
             return;
           }
@@ -147,6 +149,7 @@ app.post('/service', async (req, res, next) => {
     });
 
   } catch (error) {
+    console.log('Invalid');
     next(error);
   }
 })
@@ -155,7 +158,8 @@ app.post('/service', async (req, res, next) => {
 app.post('/feedback', (req, res) => {
   AddFeedback(req.body.name, req.body.email, req.body.message);
   res.render('index', {
-    title: 'feedback'
+    title: 'feedback',
+    message:'null'
   });
 })
 
@@ -169,7 +173,13 @@ app.post('/feedback', (req, res) => {
 // error handler
 app.use((error, req, res, next) => {
   console.log(`Error handler activated\n Error:${error.message}`);
-  res.send(error.message);
+  if(error.message=="url must be a valid URL")error.message="Input must be a valid URL";
+  res.render('index', {
+    title: 'error',
+    message:`${error.message}`
+  });
+  // res.send(error.message);
+
 
 })
 

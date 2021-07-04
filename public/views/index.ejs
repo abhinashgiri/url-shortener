@@ -15,8 +15,12 @@
   <!-- My CSS Stylesheet -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="dark.css">
-  <script  src='./sweetalert2.min.js'></script>
+  <link type="text/css" rel="stylesheet" href="src/dark.css">
 
+  <script  src='./sweetalert2.min.js'></script>
+  <script src="flatpickr.min.js"></script>
+ 
+  
 
 </head>
 
@@ -31,7 +35,10 @@
     <div id="feedback"></div>
   <% } else if (title==='urlshortify') { %>
     <div id="urlshortify"></div>
+  <% } else if (title==='error') { %>
+    <div id="error" class="<%= message%>" ></div>   
   <% } %>
+  
    
    
    
@@ -65,6 +72,9 @@
     </div>
   </header>
 
+
+
+
   <!-- Forms Section  -->
   <section class="text-gray-400 bg-gray-900 body-font w-full">
     <h2 class="text-4xl font-semibold text-white capitalize text-center md:pt-6">Welcome Guest !</h2>
@@ -93,10 +103,11 @@
 
               <div>
                 <label id="expiry-label" class="text-purple-700 dark:text-gray-200" for="Expiry_date">Expiry</label>
-                <input name="expiry" id="Expiry_date" type="datetime-local" onload="get_Date_Time()"
+                <input name="expiry" id="Expiry_date"
                   class="block w-full px-4 py-2 mt-2 text-yellow-600 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                 <label id="alias-subHeading" class="text-gray-700 md:pl-8 text-xs dark:text-gray-200">At this time (minimum 5 minutes) , Alias will self-destroy.</label>
               </div>
+
             </div>
 
             <div class="flex mt-6">
@@ -204,4 +215,5 @@
 </body>
 
 <script src="../time.js"></script>
+<script src="../flatpickr.js"></script>
 </html>
