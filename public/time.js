@@ -1,9 +1,6 @@
 
 const homePage = "https://urlshorify.herokuapp.com/";
 // const homePage = "http://localhost:5000/";
-
-
-
 function currentTime() {
   var date = new Date(); /* creating object of Date class */
   var hour = date.getHours();
@@ -91,7 +88,7 @@ async function blocked_hostname()
 
 async function Error_Handler(message)
 {
-  console.log('Activated');
+  // console.log('Activated');
   Swal.fire({
     title: 'Error !',
     text:message,

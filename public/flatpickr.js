@@ -1,18 +1,15 @@
-
-
-
 function get_Time()
 {
   let g = new Date();
   g.setMinutes(g.getMinutes()+5);
   let p = g.getHours() + ":"+ g.getMinutes();
   p.toString();
-  console.log(`g is ${g} , ${p}`);
+  // console.log(`g is ${g} , ${p}`);
   return p;
 }
 
 const x = document.getElementById('Expiry_date');
-console.log(x);
+// console.log(x);
 
 const config = {
   enableTime: true,
@@ -59,7 +56,7 @@ document.getElementById('noExpiry').onchange = function() {
 };
 
 setInterval(() => {
-  console.log('Updating every min ..');
+  // console.log('Updating every min ..');
   if(hide=="block")
   {
     fp.setDate((new Date).setMinutes((new Date).getMinutes()+5)  );

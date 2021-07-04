@@ -1,10 +1,9 @@
+const yup_validation = require('debug')('app:yup_validation');
 const yup = require('yup')
 const {nanoid} = require('nanoid')
 
-const url_size = 6;
-
-
-
+const url_size = process.env.URL_SIZE;
+yup_validation(url_size);
 
 const schema = yup.object().shape({
   url : yup.string().trim().url().required('Must Enter an URL'),
@@ -23,16 +22,17 @@ async function input_validation(req,res,next)
       slug:slug}
   )
   .then(async ()=>{
-    console.log('validated');
+    yup_validation('validated');
     if(slug==='...')slug='';   
     if(!slug)slug =  nanoid(url_size);
     // removed await from here
     req.body.url =   url;
     req.body.slug =  slug;
-    console.log(req.body);
+    yup_validation(req.body);
     return;
   })
   .catch((err)=>{
+    yup_validation(err);
     next(err);
     return;
   }) 

@@ -24,7 +24,6 @@
 
 </head>
 
-
 <body>
   
   <% if (title==='slug_in_use') { %>
@@ -38,37 +37,20 @@
   <% } else if (title==='error') { %>
     <div id="error" class="<%= message%>" ></div>   
   <% } %>
-  
-   
-   
-   
-
-  
 
   <header class="text-gray-400 bg-gray-900 body-font">
 
     <div class=" container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
       <a href="/" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
         <img src="/images/url-shorten.svg" alt="url-shorten" class="h-16">
-        <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
-          stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-blue-500 rounded-full"
-          viewBox="0 0 24 24">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-        </svg> -->
-
+      
         <span class="ml-3 text-4xl">Shortify</span>
       </a>
       <nav class="  md:ml-auto flex flex-wrap  float-right">
         <a class="mr-5 hover:text-white" href="about.html">How It Works</a>
         <a href="contact.html" class="mr-5 hover:text-white  ">Feedback</a>
-
-        <!-- <a class="mr-5 hover:text-white">Fourth Link</a> -->
       </nav>
-      <!-- <button class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-yellow-50 rounded text-base mt-4 md:mt-0">Button
-        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-          <path d="M5 12h14M12 5l7 7-7 7"></path>
-        </svg>
-      </button> -->
+      
     </div>
   </header>
 
@@ -162,20 +144,6 @@
         </div>
       </div>
   </section>
-  <!-- <h1 class="">Welcome to Homepage</h1>
-  <form action="/testing" method="POST" >
-    <div>
-      <label for="original_url"></label>
-      <input type="url" name ="url"  id="original_url" required placeholder="Url">
-    </div>
-    <div>
-      <label>
-        <input type="text" name ="slug"   required placeholder="Alias">
-      </label>
-    </div>
-    <button type="submit">Submit</button>
-  </form> -->
-
 
   <!-- Footer Section -->
 

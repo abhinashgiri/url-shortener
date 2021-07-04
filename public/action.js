@@ -1,11 +1,10 @@
-
 var btn = document.getElementById('btn');
 var clipboard = new ClipboardJS(btn);
 
 
 clipboard.on('success', function (e) {
   icon.src="./images/tick.svg"
-  console.log(`e  is ${e.body}`,'success');
+  // console.log(`e  is ${e.body}`,'success');
   setTimeout(()=>{
     icon.src="./images/clippy.svg"
   },1000)
@@ -41,4 +40,8 @@ function updateTime(k) { /* appending 0 before time elements if less than 10 */
 
 window.onload = ()=>{
   currentTime();
+  if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+  }
+
 }

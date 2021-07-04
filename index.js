@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+const debug = require('debug')('app:debug');
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -41,15 +41,6 @@ app.set('views', 'public/views');
 
 
 
-
-// app.get('/testing', (req, res, next) => {
-//   console.log(req.body);
-//   res.sendFile(path.join(__dirname + '/public/about.html'));
-//   // res.render('success', { ORIGINAL_URL: 'https://abhinash.org', SHORT_URL: 'https://www.youtube.com/watch?v=VM-2xSaDxJc' });
-// })
-
-
-
 const port = process.env.PORT || 5000;
 
 
@@ -63,9 +54,9 @@ app.get('/', (req, res) => {
 
 // redirect to original url when given a shorten url by querying the database for original url
 app.get('/:id', (req, res, next) => {
-  console.log(`entered ${req.params.id}`);
+  debug(`entered ${req.params.id}`);
   const slug = req.params.id;
-  console.log(`slug :${slug}`);
+  debug(`slug :${slug}`);
   // getOriginalUrl returns an array of results (although a single element in an arrar , in our case)
   getOriginalUrl(slug)
     .then((result) => {
@@ -77,7 +68,7 @@ app.get('/:id', (req, res, next) => {
         })
         return;
       }
-      console.log(`originalUrl : ${result[0].url}`);
+      debug(`originalUrl : ${result[0].url}`);
       res.redirect(result[0].url);
     })
     .catch((error) => {
@@ -97,7 +88,7 @@ app.post('/service', async (req, res, next) => {
     // res.send(req.body);
 
     //  ban same domain
-    console.log(req.body);
+    debug(req.body);
     const urlObject = new URL(req.body.url);
     if (urlObject.hostname == 'urlshorify.herokuapp.com') {
       res.render('index', {
@@ -110,7 +101,7 @@ app.post('/service', async (req, res, next) => {
     await input_validation(req, res, next).then(() => {
       createEntry(req.body.url, req.body.slug)
         .then((obj) => {
-          console.log(`obj : ${obj.createdOn}`);
+          debug(`obj : ${obj.createdOn}`);
           const slug_in_use = obj.slug_used;
           const createdOn = obj.createdOn;
           if (slug_in_use == true) {
@@ -120,26 +111,26 @@ app.post('/service', async (req, res, next) => {
             });
             return;
           }
-          console.log(`slug_in_use : ${slug_in_use}`);
+          debug(`slug_in_use : ${slug_in_use}`);
 
           if (req.body.neverExpire != 'on') {
-            console.log('checkbox is not selected');
+            debug('checkbox is not selected');
             // schedule auto deletion at expiry time
             let expiry = req.body.expiry;
             expiry = new Date(expiry);
             expiry = expiry.toUTCString();
             expiry = new Date(expiry);
-            console.log(`created on ${createdOn}, expires at ${date.format(expiry, 'YYYY/MM/DD HH:mm:ss')}`);
+            debug(`created on ${createdOn}, expires at ${date.format(expiry, 'YYYY/MM/DD HH:mm:ss')}`);
             schedule.scheduleJob(expiry, async () => {
               await removeEntry(req.body.slug).then((result) => {
-                console.log(`Deleted entry ${result}`);
+                debug(`Deleted entry ${result}`);
               })
             })
           }
 
 
           const link = homePage + req.body.slug;
-          console.log(link);
+          debug(link);
           res.render('success', {
             ORIGINAL_URL: req.body.url,
             SHORT_URL: link
@@ -149,7 +140,7 @@ app.post('/service', async (req, res, next) => {
     });
 
   } catch (error) {
-    console.log('Invalid');
+    debug('Invalid');
     next(error);
   }
 })
@@ -172,7 +163,7 @@ app.post('/feedback', (req, res) => {
 
 // error handler
 app.use((error, req, res, next) => {
-  console.log(`Error handler activated\n Error:${error.message}`);
+  debug(`Error handler activated\n Error:${error.message}`);
   if(error.message=="url must be a valid URL")error.message="Input must be a valid URL";
   res.render('index', {
     title: 'error',
@@ -185,7 +176,7 @@ app.use((error, req, res, next) => {
 
 // 404 route
 app.use(function (req, res, next) {
-  console.log('404 Error Handled Sucessfully !');
+  debug('404 Error Handled Sucessfully !');
   res.status(200).sendFile(path.join(__dirname + '/public/Not_Found.html'));
 })
 
@@ -193,5 +184,5 @@ app.use(function (req, res, next) {
 
 
 app.listen(port, () => {
-  console.log(`Listening on http://localhost:${port}`);
+  debug(`Listening on http://localhost:${port}`);
 })
