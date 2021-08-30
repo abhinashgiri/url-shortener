@@ -81,7 +81,7 @@ So, I thought of developing a shortening service and name it **Shortify.**
 
 3. The shortened URL is of type:  **https://urlshorify.herokuapp.com/Alias**
 
-      When the user puts the shortened URL in the **URL bar** of the browser, the Alias parameter is extracted and the **lookup **in the **database** is performed and the user is redirected to a long URL corresponding to the shortened link in the lookup.
+	When the user puts the shortened URL in the **URL bar** of the browser, the Alias parameter is extracted and the **lookup** in the **database** is performed and the user is redirected to a long URL corresponding to the shortened link in the lookup.
 
 
 
