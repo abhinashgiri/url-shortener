@@ -19,8 +19,9 @@ const {
 
 
 // "build": "tailwindcss build ./public/src/tailwind-styles.css -o ./public/style.css"
-const homePage = "https://urlshorify.herokuapp.com/";
+const homePage = process.env.HOMEPAGE;
 // const homePage = "http://localhost:5000/";
+const port = process.env.PORT || 5000;
 const app = express();
 
 app.use(express.json());
@@ -41,7 +42,7 @@ app.set('views', 'public/views');
 
 
 
-const port = process.env.PORT || 5000;
+
 
 
 app.get('/', (req, res) => {
@@ -79,8 +80,6 @@ app.get('/:id', (req, res, next) => {
 
 
 
-
-
 // generate shorten url for requested url and enter in database
 app.post('/service', async (req, res, next) => {
   try {
@@ -90,7 +89,7 @@ app.post('/service', async (req, res, next) => {
     //  ban same domain
     debug(req.body);
     const urlObject = new URL(req.body.url);
-    if (urlObject.hostname == 'urlshorify.herokuapp.com') {
+    if (urlObject.hostname == homePage) {
       res.render('index', {
         title: 'urlshortify',
         message:'null'
