@@ -15,8 +15,7 @@ const {Feedback}  = require('./models/feedback')
 
 
 
-async function createEntry(originalUrl,shortUrl)
-{
+async function createEntry(originalUrl,shortUrl){
 
   let entry = new urlShortener({
     url  : originalUrl,
@@ -36,24 +35,21 @@ async function createEntry(originalUrl,shortUrl)
   return {slug_used:SLUG_USED,createdOn:CREATED_ON};
 }
 
-async function removeEntry(slug)
-{
+async function removeEntry(slug){
   let result = await urlShortener.findOneAndDelete({slug:slug});
   db(`document to be removed is ${result}`);
   return result;
 }
 
 
-async function getOriginalUrl (slug)
-{
+async function getOriginalUrl (slug){
   const result = await urlShortener.find({slug:slug});
   db(`getOriginalurl , result : ${result}`);
   return result;
 }
 
 
-async function AddFeedback(name,email,message)
-{
+async function AddFeedback(name,email,message){
 
   let entry = new Feedback({
     name  : name,
@@ -66,4 +62,3 @@ async function AddFeedback(name,email,message)
 
 
 module.exports={createEntry,getOriginalUrl,removeEntry,AddFeedback};
-

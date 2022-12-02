@@ -1,5 +1,5 @@
 
-const homePage = "https://urlshorify.herokuapp.com/";
+const homePage = process.env.HOMEPAGE;
 // const homePage = "http://localhost:5000/";
 function currentTime() {
   var date = new Date(); /* creating object of Date class */
