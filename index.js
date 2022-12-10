@@ -22,6 +22,7 @@ const {
 const homePage = process.env.HOMEPAGE;
 // const homePage = "http://localhost:5000/";
 const port = process.env.PORT || 5000;
+console.log(homePage);
 const app = express();
 
 app.use(express.json());

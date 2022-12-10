@@ -5,8 +5,8 @@ const user  = process.env.MONGO_USER;   // db user
 const connectionString = 'mongodb+srv://'+user+':'+key+'@cluster0.7w8cs.mongodb.net/Shortify?retryWrites=true&w=majority'
 
 mongoose.connect(connectionString,{'useNewUrlParser':true, 'useUnifiedTopology':true})
-.then(()=>db("Sucessfully Connected to MongoDB ..."))
-.catch((error)=>db(`Database Error : ${error}`));
+.then(()=>console.log("Sucessfully Connected to MongoDB ..."))
+.catch((error)=>console.log(`Database Error : ${error}`));
 
 
 // require models
