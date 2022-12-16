@@ -1,6 +1,5 @@
-// const homePage = "http://localhost:5000/";
-console.log(homePage);
-console.log("is ");
+const homePage = "https://shortify-9s08.onrender.com/";
+console.log(`homePage: ${homePage} `);
 function currentTime() {
   var date = new Date(); /* creating object of Date class */
   var hour = date.getHours();
