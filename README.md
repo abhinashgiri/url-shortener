@@ -79,7 +79,7 @@ So, I thought of developing a shortening service and name it **Shortify.**
 
       After successful validation, a shortened is generated using the nanoid package (if the Alias is not available or not provided). Then an **entry** is created in the **database** with a corresponding long URL and shorten link. After that, a **deletion** **job** is **scheduled** at the **expiry time** using the **node-schedule** package. The shortened URL is returned to the user.
 
-3. The shortened URL is of type:  **https://urlshorify.herokuapp.com/Alias**
+3. The shortened URL is of type:  **https://shortify-9s08.onrender.com/Alias**
 
 	When the user puts the shortened URL in the **URL bar** of the browser, the Alias parameter is extracted and the **lookup** in the **database** is performed and the user is redirected to a long URL corresponding to the shortened link in the lookup.
 
