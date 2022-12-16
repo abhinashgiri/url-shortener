@@ -9,12 +9,12 @@ const schema = yup.object().shape({
   url : yup.string().trim().url().required('Must Enter an URL'),
   slug: yup.string().trim(),
 })
-async function input_validation(req,res,next)
-{
+
+async function input_validation(req,res,next){
 
   let {url,slug}=req.body;
   url = url.trim();
- 
+
   // regex expression to replace each continuous whitespace substring with empty string 
   slug = slug.replace(/\s+/g, '');
   await schema.validate({

@@ -1,5 +1,6 @@
 require('dotenv').config();
 const debug = require('debug')('app:debug');
+debug(process.env)
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -38,13 +39,6 @@ app.use(helmet());
 app.use(express.static('./public'));
 app.set('view engine', 'ejs');
 app.set('views', 'public/views');
-
-
-
-
-
-
-
 
 app.get('/', (req, res) => {
   res.render('index', {
@@ -153,11 +147,6 @@ app.post('/feedback', (req, res) => {
     message:'null'
   });
 })
-
-
-
-
-
 
 
 

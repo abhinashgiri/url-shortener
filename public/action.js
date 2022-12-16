@@ -26,7 +26,7 @@ function currentTime() {
   min = updateTime(min);
   sec = updateTime(sec);
   document.getElementById("clock").innerText = hour + " : " + min + " : " + sec + " " + midday; /* adding time to the div */
-    var t = setTimeout(currentTime, 1000); /* setting timer */
+  var t = setTimeout(currentTime, 1000); /* setting timer */
 }
 
 function updateTime(k) { /* appending 0 before time elements if less than 10 */
