@@ -1,6 +1,6 @@
-
-let homePage = process.env.HOMEPAGE;
 // const homePage = "http://localhost:5000/";
+console.log(homePage);
+console.log("is ");
 function currentTime() {
   var date = new Date(); /* creating object of Date class */
   var hour = date.getHours();
